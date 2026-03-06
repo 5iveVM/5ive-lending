@@ -54,7 +54,7 @@ Use this checklist during execution. Do not skip gates.
 
 1. Run:
 ```bash
-5ive build
+node ../five-cli/dist/index.js build --project .
 ```
 2. If compile fails, first check:
    - missing semicolons in account fields
@@ -70,15 +70,15 @@ Use this checklist during execution. Do not skip gates.
 
 1. Run local/sdk tests first:
 ```bash
-5ive test --sdk-runner
+node ../five-cli/dist/index.js test --sdk-runner
 ```
 2. Run focused tests:
 ```bash
-5ive test --filter "test_*" --verbose
+node ../five-cli/dist/index.js test --filter "test_*" --verbose
 ```
 3. If needed, run on-chain test mode with explicit target:
 ```bash
-5ive test tests/ --on-chain --target devnet
+node ../five-cli/dist/index.js test tests/ --on-chain --target devnet
 ```
 4. Record pass/fail evidence.
 

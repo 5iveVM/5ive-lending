@@ -2,7 +2,7 @@
 
 This is the mandatory, high-signal contract for agents working in this repo.
 Use this file first.
-Use `/Users/ivmidable/Development/five-mono/AGENTS_REFERENCE.md` for deep syntax inventory, recipes, and long examples.
+Use `../AGENTS_REFERENCE.md` for deep syntax inventory, recipes, and long examples.
 
 ## 1) Mission
 
@@ -89,15 +89,15 @@ Default scaling standards:
 ## 8) Testing and Discovery
 
 Canonical expectations:
-1. `5ive test` discovers `.v` tests and `.test.json` suites.
+1. `node ../five-cli/dist/index.js test` discovers `.v` tests and `.test.json` suites.
 2. Prefer `pub test_*` function naming in `.v` tests.
 3. Use `// @test-params <arg...> <expected>` where deterministic outputs are expected.
 4. Common scaffold path: `tests/main.test.v`.
 
 Useful commands:
-1. `5ive test --filter "test_*" --verbose`
-2. `5ive test --watch`
-3. `5ive test --sdk-runner`
+1. `node ../five-cli/dist/index.js test --filter "test_*" --verbose`
+2. `node ../five-cli/dist/index.js test --watch`
+3. `node ../five-cli/dist/index.js test --sdk-runner`
 
 ## 9) Program ID/Target Resolution
 
@@ -138,5 +138,5 @@ Work is complete only when all applicable items are satisfied:
 ## 13) Where to Look Next
 
 For full detail use:
-1. `/Users/ivmidable/Development/five-mono/AGENTS_CHECKLIST.md` for step-by-step gating.
-2. `/Users/ivmidable/Development/five-mono/AGENTS_REFERENCE.md` for deep language inventory and full reference implementations.
+1. `../AGENTS_CHECKLIST.md` for step-by-step gating.
+2. `../AGENTS_REFERENCE.md` for deep language inventory and full reference implementations.

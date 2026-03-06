@@ -59,5 +59,5 @@ This project follows the **5IVE Agent Operating Contract** defined in `AGENTS.md
 - Preferred test path: `tests/main.test.v`.
 
 ## Additional Resources
-- Refer to `/Users/ivmidable/Development/five-mono/AGENTS_REFERENCE.md` for deep syntax inventory and recipes.
-- Refer to `/Users/ivmidable/Development/five-mono/AGENTS_CHECKLIST.md` for step-by-step gating.
+- Refer to `../AGENTS_REFERENCE.md` for deep syntax inventory and recipes.
+- Refer to `../AGENTS_CHECKLIST.md` for step-by-step gating.

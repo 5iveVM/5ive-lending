@@ -314,11 +314,11 @@ From tokenizer/parser support:
 Repository tests also use comment-based param conventions (`// @test-params ...`) in many scripts.
 
 Canonical test discovery behavior:
-1. `5ive test` discovers both `.v` test sources and `.test.json` suites.
+1. `node ../five-cli/dist/index.js test` discovers both `.v` test sources and `.test.json` suites.
 2. For `.v` tests, prefer `pub test_*` function naming.
 3. Use `// @test-params <arg1> <arg2> ... <expected>` for deterministic input/expected conventions.
 4. Default scaffolded path is `tests/main.test.v`.
-5. Useful selectors: `5ive test --filter "<pattern>"`, `5ive test --watch`.
+5. Useful selectors: `node ../five-cli/dist/index.js test --filter "<pattern>"`, `node ../five-cli/dist/index.js test --watch`.
 
 ### 4.12 Blockchain-oriented built-ins
 Core built-ins available in all contracts:
@@ -402,7 +402,7 @@ Confirmed return types: `u8`, `u16`, `u32`, `u64`, `u128`, `i8`..`i64`, `bool`, 
 
 ### 6.1 Install and identity
 ```bash
-npm install -g @5ive-tech/cli
+node ../five-cli/dist/index.js --help
 5ive --version
 ```
 
@@ -414,9 +414,9 @@ cd my-program
 
 ### 6.3 Compile
 ```bash
-5ive compile src/main.v -o build/main.five
+node ../five-cli/dist/index.js compile src/main.v -o build/main.five
 # or project-aware
-5ive build
+node ../five-cli/dist/index.js build --project .
 ```
 
 ### 6.4 Local execute
@@ -447,11 +447,11 @@ cd my-program
 
 ### 6.8 Test modes
 ```bash
-5ive test --sdk-runner
-5ive test tests/ --on-chain --target devnet
-5ive test --sdk-runner --format json
-5ive test --filter "test_*" --verbose
-5ive test --watch
+node ../five-cli/dist/index.js test --sdk-runner
+node ../five-cli/dist/index.js test tests/ --on-chain --target devnet
+node ../five-cli/dist/index.js test --sdk-runner --format json
+node ../five-cli/dist/index.js test --filter "test_*" --verbose
+node ../five-cli/dist/index.js test --watch
 ```
 
 ### 6.9 Build Telemetry Interpretation
