@@ -7,7 +7,7 @@ A basic project built with 5IVE VM.
 ### Prerequisites
 
 - Node.js 18+
-- 5IVE CLI: `npm install -g @5ive-tech/cli`
+- Local monorepo CLI build: `node ../five-cli/dist/index.js --help`
 
 ### Building
 
@@ -33,16 +33,16 @@ npm run build:debug
 npm test
 
 # Run with watch mode for continuous testing
-5ive test --watch
+node ../five-cli/dist/index.js test --watch
 
 # Run specific tests by filter
-5ive test --filter "test_add"
+node ../five-cli/dist/index.js test --filter "test_add"
 
 # Run with verbose output
-5ive test --verbose
+node ../five-cli/dist/index.js test --verbose
 
 # Run with JSON output for CI/CD
-5ive test --format json
+node ../five-cli/dist/index.js test --format json
 ```
 
 #### Writing Tests
@@ -95,11 +95,20 @@ If your project uses multiple modules with `use` or `import` statements, 5IVE CL
 
 ```bash
 # Automatic discovery of imported modules
-5ive compile src/main.v --auto-discover
+node ../five-cli/dist/index.js compile src/main.v --auto-discover
 
 # Or use the build command which respects five.toml configuration
-5ive build
+node ../five-cli/dist/index.js build --project .
 ```
+
+## Serializer and Typed Account Policy
+
+1. Supported account serializers: `raw`, `borsh`, `bincode`.
+2. Default account serializer is `raw`.
+3. Precedence is: parameter `@serializer(...)` override > account type `@serializer(...)` > interface/program default.
+4. `anchor` is not a serializer keyword.
+5. For typed account metadata, use `acct.ctx.*` (for example `acct.ctx.key`), not `acct.key`.
+6. For external state reads, prefer namespaced account types such as `spl_token::Mint` and `spl_token::TokenAccount` with explicit `@serializer("raw")` where needed.
 
 ## Learn More
 

@@ -1,11 +1,14 @@
+schema_version = 1
+
 # 5IVE VM Project Configuration
 [project]
-name = "5ive-lending-2"
+name = "5ive-lending"
 version = "0.1.0"
 description = "A 5IVE VM project"
 source_dir = "src"
 build_dir = "build"
 target = "vm"
+entry_point = "src/main.v"
 
 [optimizations]
 enable_compression = true
@@ -13,15 +16,15 @@ enable_constraint_optimization = true
 optimization_level = "production"
 
 [dependencies]
-# Add project dependencies here
-# example = { path = "../example" }
+std = { package = "@5ive/std", version = "0.1.0", source = "bundled", link = "inline" }
 
 [build]
 # Custom build settings
+output_artifact_name = "main"
 max_bytecode_size = 1048576  # 1MB
 target_compute_units = 200000
 
 [deploy]
 # Deployment settings
-network = "devnet"
+cluster = "devnet"
 # program_id = "your-program-id"

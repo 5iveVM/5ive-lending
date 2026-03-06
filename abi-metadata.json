@@ -1,0 +1,7 @@
+{
+  "abiVersion": 1,
+  "project": "5ive-lending",
+  "canonical": true,
+  "updatedAt": "2026-02-18",
+  "notes": "Merged features from 5ive-lending and 5ive-lending-4 while preserving 5ive-lending instruction names."
+}

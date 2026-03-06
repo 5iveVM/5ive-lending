@@ -1,0 +1,20 @@
+{
+  "name": "5ive-lending-client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc --noEmit -p tsconfig.json",
+    "run": "npm run build && node dist/main.js"
+  },
+  "dependencies": {
+    "@5ive-tech/sdk": "file:../../five-sdk",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.9.2"
+  }
+}

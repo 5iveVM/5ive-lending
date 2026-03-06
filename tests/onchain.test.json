@@ -1,0 +1,53 @@
+{
+  "source": "../src/main.v",
+  "accounts": {
+    "market": {
+      "owner": "system",
+      "data_len": 600,
+      "is_writable": true
+    },
+    "admin": {
+      "address": "payer",
+      "is_signer": true,
+      "is_writable": true
+    }
+  },
+  "tests": {
+    "utilization_onchain_exec": {
+      "function": "get_utilization",
+      "parameters": [
+        1000,
+        500
+      ],
+      "expected": {
+        "success": true
+      }
+    },
+    "borrow_rate_onchain_exec": {
+      "function": "get_borrow_rate",
+      "parameters": [
+        2,
+        20,
+        80,
+        40
+      ],
+      "expected": {
+        "success": true
+      }
+    },
+    "set_market_pause_uninitialized_fails": {
+      "function": "set_market_pause",
+      "accounts": [
+        "market",
+        "admin"
+      ],
+      "parameters": [
+        true
+      ],
+      "expected": {
+        "success": false,
+        "errorContains": "custom program error: 0x232b"
+      }
+    }
+  }
+}
