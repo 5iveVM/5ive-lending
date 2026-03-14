@@ -116,24 +116,28 @@
         },
         {
           "name": "liquidity_mint",
-          "param_type": "Account",
+          "param_type": "spl_token::Mint",
           "is_account": true,
-          "attributes": []
+          "attributes": [
+            "serializer"
+          ]
         },
         {
           "name": "liquidity_supply",
-          "param_type": "Account",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
           "name": "collateral_mint",
-          "param_type": "Account",
+          "param_type": "spl_token::Mint",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
@@ -255,8 +259,89 @@
       "bytecode_offset": 0
     },
     {
-      "name": "refresh_reserve",
+      "name": "init_oracle",
       "index": 6,
+      "parameters": [
+        {
+          "name": "oracle",
+          "param_type": "PriceOracle",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "init"
+          ]
+        },
+        {
+          "name": "authority",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": [
+            "signer"
+          ]
+        },
+        {
+          "name": "price",
+          "param_type": "u64",
+          "is_account": false,
+          "attributes": []
+        },
+        {
+          "name": "decimals",
+          "param_type": "u8",
+          "is_account": false,
+          "attributes": []
+        }
+      ],
+      "return_type": null,
+      "is_public": true,
+      "bytecode_offset": 0
+    },
+    {
+      "name": "set_oracle",
+      "index": 7,
+      "parameters": [
+        {
+          "name": "oracle",
+          "param_type": "PriceOracle",
+          "is_account": true,
+          "attributes": [
+            "mut"
+          ]
+        },
+        {
+          "name": "authority",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": [
+            "signer"
+          ]
+        },
+        {
+          "name": "price",
+          "param_type": "u64",
+          "is_account": false,
+          "attributes": []
+        },
+        {
+          "name": "decimals",
+          "param_type": "u8",
+          "is_account": false,
+          "attributes": []
+        },
+        {
+          "name": "last_update",
+          "param_type": "u64",
+          "is_account": false,
+          "attributes": []
+        }
+      ],
+      "return_type": null,
+      "is_public": true,
+      "bytecode_offset": 0
+    },
+    {
+      "name": "refresh_reserve",
+      "index": 8,
       "parameters": [
         {
           "name": "reserve",
@@ -273,7 +358,7 @@
     },
     {
       "name": "refresh_obligation",
-      "index": 7,
+      "index": 9,
       "parameters": [
         {
           "name": "market",
@@ -297,9 +382,11 @@
         },
         {
           "name": "liquidity_mint",
-          "param_type": "Account",
+          "param_type": "spl_token::Mint",
           "is_account": true,
-          "attributes": []
+          "attributes": [
+            "serializer"
+          ]
         },
         {
           "name": "oracle_state",
@@ -314,118 +401,6 @@
     },
     {
       "name": "refresh_obligation_with_oracle",
-      "index": 8,
-      "parameters": [
-        {
-          "name": "market",
-          "param_type": "LendingMarket",
-          "is_account": true,
-          "attributes": []
-        },
-        {
-          "name": "obligation",
-          "param_type": "Obligation",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "reserve",
-          "param_type": "Reserve",
-          "is_account": true,
-          "attributes": []
-        },
-        {
-          "name": "oracle_state",
-          "param_type": "PriceOracle",
-          "is_account": true,
-          "attributes": []
-        }
-      ],
-      "return_type": null,
-      "is_public": true,
-      "bytecode_offset": 0
-    },
-    {
-      "name": "deposit_reserve_liquidity",
-      "index": 9,
-      "parameters": [
-        {
-          "name": "market",
-          "param_type": "LendingMarket",
-          "is_account": true,
-          "attributes": []
-        },
-        {
-          "name": "reserve",
-          "param_type": "Reserve",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "user_liquidity",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "user_collateral",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "liquidity_supply",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "collateral_mint",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "market_authority",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "signer"
-          ]
-        },
-        {
-          "name": "user_authority",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "signer"
-          ]
-        },
-        {
-          "name": "amount",
-          "param_type": "u64",
-          "is_account": false,
-          "attributes": []
-        }
-      ],
-      "return_type": null,
-      "is_public": true,
-      "bytecode_offset": 0
-    },
-    {
-      "name": "withdraw_reserve_liquidity",
       "index": 10,
       "parameters": [
         {
@@ -435,53 +410,21 @@
           "attributes": []
         },
         {
-          "name": "reserve",
-          "param_type": "Reserve",
+          "name": "obligation",
+          "param_type": "Obligation",
           "is_account": true,
           "attributes": [
             "mut"
           ]
         },
         {
-          "name": "obligation",
-          "param_type": "Obligation",
+          "name": "reserve",
+          "param_type": "Reserve",
           "is_account": true,
           "attributes": []
         },
         {
-          "name": "user_liquidity",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "user_collateral",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "liquidity_supply",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "collateral_mint",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        },
-        {
-          "name": "market_authority",
+          "name": "borrower",
           "param_type": "Account",
           "is_account": true,
           "attributes": [
@@ -489,15 +432,7 @@
           ]
         },
         {
-          "name": "user_authority",
-          "param_type": "Account",
-          "is_account": true,
-          "attributes": [
-            "signer"
-          ]
-        },
-        {
-          "name": "collateral_amount",
+          "name": "oracle_price",
           "param_type": "u64",
           "is_account": false,
           "attributes": []
@@ -508,7 +443,7 @@
       "bytecode_offset": 0
     },
     {
-      "name": "borrow_obligation_liquidity",
+      "name": "deposit_reserve_liquidity",
       "index": 11,
       "parameters": [
         {
@@ -526,27 +461,39 @@
           ]
         },
         {
-          "name": "obligation",
-          "param_type": "Obligation",
+          "name": "user_liquidity",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
-          "name": "user_liquidity",
-          "param_type": "Account",
+          "name": "user_collateral",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
           "name": "liquidity_supply",
-          "param_type": "Account",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "collateral_mint",
+          "param_type": "spl_token::Mint",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
           ]
         },
         {
@@ -566,6 +513,12 @@
           ]
         },
         {
+          "name": "token_program",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": []
+        },
+        {
           "name": "amount",
           "param_type": "u64",
           "is_account": false,
@@ -577,7 +530,7 @@
       "bytecode_offset": 0
     },
     {
-      "name": "repay_obligation_liquidity",
+      "name": "withdraw_reserve_liquidity",
       "index": 12,
       "parameters": [
         {
@@ -598,24 +551,50 @@
           "name": "obligation",
           "param_type": "Obligation",
           "is_account": true,
-          "attributes": [
-            "mut"
-          ]
+          "attributes": []
         },
         {
           "name": "user_liquidity",
-          "param_type": "Account",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "user_collateral",
+          "param_type": "spl_token::TokenAccount",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
           ]
         },
         {
           "name": "liquidity_supply",
+          "param_type": "spl_token::TokenAccount",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "collateral_mint",
+          "param_type": "spl_token::Mint",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "market_authority",
           "param_type": "Account",
           "is_account": true,
           "attributes": [
-            "mut"
+            "signer"
           ]
         },
         {
@@ -627,7 +606,13 @@
           ]
         },
         {
-          "name": "amount",
+          "name": "token_program",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": []
+        },
+        {
+          "name": "collateral_amount",
           "param_type": "u64",
           "is_account": false,
           "attributes": []
@@ -638,7 +623,7 @@
       "bytecode_offset": 0
     },
     {
-      "name": "liquidate_obligation",
+      "name": "borrow_obligation_liquidity",
       "index": 13,
       "parameters": [
         {
@@ -664,35 +649,185 @@
           ]
         },
         {
-          "name": "liquidator_liquidity",
-          "param_type": "Account",
+          "name": "user_liquidity",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
           "name": "liquidity_supply",
+          "param_type": "spl_token::TokenAccount",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "market_authority",
           "param_type": "Account",
           "is_account": true,
           "attributes": [
+            "signer"
+          ]
+        },
+        {
+          "name": "user_authority",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": [
+            "signer"
+          ]
+        },
+        {
+          "name": "token_program",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": []
+        },
+        {
+          "name": "amount",
+          "param_type": "u64",
+          "is_account": false,
+          "attributes": []
+        }
+      ],
+      "return_type": null,
+      "is_public": true,
+      "bytecode_offset": 0
+    },
+    {
+      "name": "repay_obligation_liquidity",
+      "index": 14,
+      "parameters": [
+        {
+          "name": "market",
+          "param_type": "LendingMarket",
+          "is_account": true,
+          "attributes": []
+        },
+        {
+          "name": "reserve",
+          "param_type": "Reserve",
+          "is_account": true,
+          "attributes": [
             "mut"
+          ]
+        },
+        {
+          "name": "obligation",
+          "param_type": "Obligation",
+          "is_account": true,
+          "attributes": [
+            "mut"
+          ]
+        },
+        {
+          "name": "user_liquidity",
+          "param_type": "spl_token::TokenAccount",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "liquidity_supply",
+          "param_type": "spl_token::TokenAccount",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "user_authority",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": [
+            "signer"
+          ]
+        },
+        {
+          "name": "token_program",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": []
+        },
+        {
+          "name": "amount",
+          "param_type": "u64",
+          "is_account": false,
+          "attributes": []
+        }
+      ],
+      "return_type": null,
+      "is_public": true,
+      "bytecode_offset": 0
+    },
+    {
+      "name": "liquidate_obligation",
+      "index": 15,
+      "parameters": [
+        {
+          "name": "market",
+          "param_type": "LendingMarket",
+          "is_account": true,
+          "attributes": []
+        },
+        {
+          "name": "reserve",
+          "param_type": "Reserve",
+          "is_account": true,
+          "attributes": [
+            "mut"
+          ]
+        },
+        {
+          "name": "obligation",
+          "param_type": "Obligation",
+          "is_account": true,
+          "attributes": [
+            "mut"
+          ]
+        },
+        {
+          "name": "liquidator_liquidity",
+          "param_type": "spl_token::TokenAccount",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
+          ]
+        },
+        {
+          "name": "liquidity_supply",
+          "param_type": "spl_token::TokenAccount",
+          "is_account": true,
+          "attributes": [
+            "mut",
+            "serializer"
           ]
         },
         {
           "name": "user_collateral",
-          "param_type": "Account",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
           "name": "collateral_mint",
-          "param_type": "Account",
+          "param_type": "spl_token::Mint",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
@@ -710,6 +845,12 @@
           "attributes": [
             "signer"
           ]
+        },
+        {
+          "name": "token_program",
+          "param_type": "Account",
+          "is_account": true,
+          "attributes": []
         },
         {
           "name": "repay_amount",
@@ -730,7 +871,7 @@
     },
     {
       "name": "collect_protocol_fees",
-      "index": 14,
+      "index": 16,
       "parameters": [
         {
           "name": "reserve",
@@ -756,18 +897,20 @@
         },
         {
           "name": "fee_recipient",
-          "param_type": "Account",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
           "name": "liquidity_supply",
-          "param_type": "Account",
+          "param_type": "spl_token::TokenAccount",
           "is_account": true,
           "attributes": [
-            "mut"
+            "mut",
+            "serializer"
           ]
         },
         {
@@ -791,7 +934,7 @@
     },
     {
       "name": "get_utilization",
-      "index": 15,
+      "index": 17,
       "parameters": [
         {
           "name": "liquidity",
@@ -812,7 +955,7 @@
     },
     {
       "name": "get_borrow_rate",
-      "index": 16,
+      "index": 18,
       "parameters": [
         {
           "name": "min_rate",
@@ -845,7 +988,7 @@
     },
     {
       "name": "calculate_utilization",
-      "index": 17,
+      "index": 19,
       "parameters": [
         {
           "name": "liquidity",
@@ -866,7 +1009,7 @@
     },
     {
       "name": "calculate_borrow_rate",
-      "index": 18,
+      "index": 20,
       "parameters": [
         {
           "name": "min_rate",
@@ -894,23 +1037,6 @@
         }
       ],
       "return_type": "u64",
-      "is_public": false,
-      "bytecode_offset": 0
-    },
-    {
-      "name": "refresh_reserve_internal",
-      "index": 19,
-      "parameters": [
-        {
-          "name": "reserve",
-          "param_type": "Reserve",
-          "is_account": true,
-          "attributes": [
-            "mut"
-          ]
-        }
-      ],
-      "return_type": null,
       "is_public": false,
       "bytecode_offset": 0
     }

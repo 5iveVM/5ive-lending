@@ -1,0 +1,8 @@
+{
+  "network": "mainnet",
+  "rpcUrl": "https://api.mainnet-beta.solana.com",
+  "fiveProgramId": "<REPLACE_WITH_MAINNET_VM_PROGRAM_ID>",
+  "vmStatePda": "<REPLACE_WITH_MAINNET_VM_STATE_PDA>",
+  "lendingScriptAccount": "<REPLACE_WITH_MAINNET_LENDING_SCRIPT_ACCOUNT>",
+  "updatedAt": "<SET_DURING_ROLLOUT>"
+}

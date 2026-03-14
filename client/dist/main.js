@@ -6,14 +6,29 @@ import { Connection, Keypair, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transa
 import { TOKEN_PROGRAM_ID, createMint, getAccount, getOrCreateAssociatedTokenAccount, mintTo, } from '@solana/spl-token';
 import { FiveProgram, FiveSDK } from '@5ive-tech/sdk';
 const NETWORK = process.env.FIVE_NETWORK || 'localnet';
+const RPC_BY_NETWORK = {
+    localnet: 'http://127.0.0.1:8899',
+    devnet: 'https://api.devnet.solana.com',
+    mainnet: 'https://api.mainnet-beta.solana.com',
+};
 const RPC_URL = process.env.FIVE_RPC_URL ||
-    (NETWORK === 'devnet' ? 'https://api.devnet.solana.com' : 'http://127.0.0.1:8899');
+    (RPC_BY_NETWORK[NETWORK] || RPC_BY_NETWORK.localnet);
+const PROGRAM_BY_NETWORK = {
+    localnet: '8h8gqgMhfq5qmPbs9nNHkXNoy2jb1JywxaRC6W68wGVm',
+    devnet: '5ive58PJUPaTyAe7tvU1bvBi25o7oieLLTRsJDoQNJst',
+    mainnet: '5ive58PJUPaTyAe7tvU1bvBi25o7oieLLTRsJDoQNJst',
+};
 const FIVE_VM_PROGRAM_ID = process.env.FIVE_VM_PROGRAM_ID ||
     process.env.FIVE_PROGRAM_ID ||
-    'FmzLpEQryX1UDtNjDBPx9GDsXiThFtzjsZXtTLNLU7Vb';
+    (PROGRAM_BY_NETWORK[NETWORK] || PROGRAM_BY_NETWORK.localnet);
+const VM_STATE_BY_NETWORK = {
+    localnet: '3grckjTe9o2AcNq7GWRtJFsYBHdsTAZeSDCGcUkyftCm',
+    devnet: '8ip3qGGETf8774jo6kXbsTTrMm5V9bLuGC4znmyZjT3z',
+    mainnet: 'GMQFFG9iy63CyUTq1pbXrAK9AcWYLbtcx5vm6KUT7CDY',
+};
 const VM_STATE_ACCOUNT = process.env.FIVE_VM_STATE_ACCOUNT ||
     process.env.VM_STATE_PDA ||
-    'GMQFFG9iy63CyUTq1pbXrAK9AcWYLbtcx5vm6KUT7CDY';
+    (VM_STATE_BY_NETWORK[NETWORK] || VM_STATE_BY_NETWORK.localnet);
 const EXPECTED_PUBLIC_FUNCTIONS = [
     'init_market',
     'set_market_pause',
