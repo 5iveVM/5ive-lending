@@ -1,12 +1,12 @@
 {
-  "artifact_path": "/Users/ivmidable/Development/five-mono/5ive-lending/build/main.five",
+  "artifact_path": "/Users/amberjackson/Documents/Development/five-org/five-mono/5ive-lending/build/main.five",
   "compiler_version": "unknown",
   "source_files": [
-    "/Users/ivmidable/Development/five-mono/5ive-lending/src/main.v"
+    "/Users/amberjackson/Documents/Development/five-org/five-mono/5ive-lending/src/main.v"
   ],
   "target": "vm",
-  "timestamp": "2026-03-12T23:10:40.881Z",
-  "hash": "dab16a7876aa740385a79fece4fd6235294d000b5c26489f06460e5de851d153",
+  "timestamp": "2026-03-16T08:33:11.302Z",
+  "hash": "f349784803ef4dc1eca314c6edb8d64b6c6fd5284c0227b33ddf1d3bcc82ead3",
   "format": "five",
   "entry_point": "src/main.v",
   "source_dir": "src"
