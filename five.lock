@@ -3,9 +3,9 @@ version = 1
 [[packages]]
 name = "5ive-lending"
 version = "0.0.0"
-address = "52R8fJgyWitShkkkt2i1tKCb6SbU8WyVv6XCaSxTKnL2"
-bytecode_hash = "a5b74b36e9f9a0986f43f3a61067c142acca46fa9924fe087a4bd5397648f594"
-deployed_at = "2026-03-19T01:33:44.485Z"
+address = "HhW7ykiYhinGQaebYk1Dyjjs3jJ992nH6TJoBybAcUGS"
+bytecode_hash = "b4a5a095630a9cea16cfd541d2774dfed2f8f0f4f3b9bb6e6ba0b5303ac48af5"
+deployed_at = "2026-03-20T02:02:30.443Z"
 
   [packages.exports]
   methods = [

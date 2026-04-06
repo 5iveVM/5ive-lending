@@ -5,8 +5,8 @@
     "/Users/ivmidable/Development/five-mono/5ive-lending/src/main.v"
   ],
   "target": "vm",
-  "timestamp": "2026-03-19T01:33:40.032Z",
-  "hash": "6cfb15f07c0cbe493a8c355377aa60480cdc19f68f66f50f2994627f5de7d9f4",
+  "timestamp": "2026-03-20T02:02:26.084Z",
+  "hash": "ce0afce31bccfde3c1774c966ff52c6ac94c7b0dd344bbf59f15de2555f8099f",
   "format": "five",
   "entry_point": "src/main.v",
   "source_dir": "src"
